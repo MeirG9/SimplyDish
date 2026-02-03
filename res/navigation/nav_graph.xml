@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_feed">
+
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.simplydish.fragments.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_register"
+            app:destination="@id/nav_register" />
+        <action
+            android:id="@+id/action_login_to_feed"
+            app:destination="@id/nav_feed"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_register"
+        android:name="com.example.simplydish.fragments.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_register_to_feed"
+            app:destination="@id/nav_feed"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_register_to_login"
+            app:destination="@id/nav_login"
+            app:popUpTo="@id/nav_login"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_feed"
+        android:name="com.example.simplydish.fragments.FeedFragment"
+        android:label="@string/nav_feed"
+        tools:layout="@layout/fragment_feed">
+        <action
+            android:id="@+id/action_feed_to_detail"
+            app:destination="@id/nav_recipe_detail" />
+        <action
+            android:id="@+id/action_global_add_recipe"
+            app:destination="@id/nav_add_recipe" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.example.simplydish.fragments.SearchFragment"
+        android:label="@string/nav_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_search_to_detail"
+            app:destination="@id/nav_recipe_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.example.simplydish.fragments.FavoritesFragment"
+        android:label="@string/nav_favorites"
+        tools:layout="@layout/fragment_favorites">
+        <action
+            android:id="@+id/action_favorites_to_detail"
+            app:destination="@id/nav_recipe_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_add_recipe"
+        android:name="com.example.simplydish.fragments.AddRecipeFragment"
+        android:label="@string/main_add_recipe"
+        tools:layout="@layout/fragment_add_recipe" />
+
+    <fragment
+        android:id="@+id/nav_recipe_detail"
+        android:name="com.example.simplydish.fragments.RecipeDetailFragment"
+        android:label="Recipe Details"
+        tools:layout="@layout/fragment_recipe_detail">
+        <argument
+            android:name="recipe"
+            app:argType="com.example.simplydish.models.Recipe" />
+    </fragment>
+
+</navigation>
